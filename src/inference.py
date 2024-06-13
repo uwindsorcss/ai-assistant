@@ -12,7 +12,7 @@ SYSTEM_PROMPT = """
 USER_PROMPT_TEMPLATE = """
     Consider the following context containing information about the Computer Science program at The University of Windsor: %s
 
-    Use the contextual information to answer the student's query: %s
+    Answer the student's query: %s
 """
 
 def get_response(query: str):

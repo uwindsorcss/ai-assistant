@@ -46,29 +46,9 @@ for _, block in df.iterrows():
         vector=embeddings)
     )
 
+# Insert points into Qdrant
 qdrant_client.upsert(
     collection_name="ai_assistant",
     wait=True,
     points=points
 )
-
-# OLD LANGCHAIN APPROACH
-# from langchain_openai import OpenAIEmbeddings
-# from langchain_community.vectorstores import Qdrant
-# from langchain_community.document_loaders import DataFrameLoader
-# # Load the OpenAI embeddings model
-# embedder = OpenAIEmbeddings(model=config.EMBEDDER_URL)
-
-# # Load input corpus into a DataFrame
-# df = pd.read_csv(config.DATA_PATH)
-# loader = DataFrameLoader(df, page_content_column="Content")
-# documents = loader.load()
-
-# # Initialize the qdrant vector store
-# qdrant = Qdrant.from_documents(
-#     documents=documents,
-#     embedding=embedder,
-#     url=config.VECTOR_DB_URL,
-#     collection_name="ai_assistant",
-#     api_key=config.QDRANT_API_KEY,
-# )
