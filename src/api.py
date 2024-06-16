@@ -8,8 +8,8 @@ app = FastAPI()
 
 # Allow CORS
 origins = [
-    "https://css.uwindsor.ca/", # The official website
-    "http://localhost:8000", # Local development
+    "https://css.uwindsor.ca/",  # The official website
+    "http://localhost:8000",  # Local development
 ]
 
 app.add_middleware(
@@ -20,9 +20,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/{query}")
 def get_response(query: str):
     """Get a response to a query"""
-    return {
-        "response": generate_response(query)
-    }
+    return {"response": generate_response(query)}

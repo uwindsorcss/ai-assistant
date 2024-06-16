@@ -1,9 +1,6 @@
 """Interface with the model for inference"""
-import os
-
-from clients import openai_client
-import config
 import loader
+from clients import openai_client
 
 SYSTEM_PROMPT = """
     You are a helpful assistant for students in the Computer Science programs at The University of Windsor.
@@ -15,6 +12,7 @@ USER_PROMPT_TEMPLATE = """
     Answer the student's query: %s
 """
 
+
 def generate_response(query: str):
     """Get a response from the model"""
 
@@ -23,7 +21,7 @@ def generate_response(query: str):
 
     # Generate response
     completion = openai_client.chat.completions.create(
-        messages = [
+        messages=[
             {
                 "role": "system",
                 "content": SYSTEM_PROMPT,
