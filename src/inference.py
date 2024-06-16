@@ -15,7 +15,7 @@ USER_PROMPT_TEMPLATE = """
     Answer the student's query: %s
 """
 
-def get_response(query: str):
+def generate_response(query: str):
     """Get a response from the model"""
 
     # Create augmented prompt
