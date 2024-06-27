@@ -7,7 +7,7 @@ import uuid
 import pandas as pd
 from qdrant_client.http.models import Distance, PointStruct, VectorParams
 
-import config
+import config as config
 from clients import openai_client, qdrant_client
 
 # Delete previous collection

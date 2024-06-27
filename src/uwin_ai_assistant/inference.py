@@ -1,6 +1,6 @@
 """Interface with the model for inference"""
-import config
-import loader
+import config as config
+import loader as loader
 from clients import openai_client
 
 SYSTEM_PROMPT = """

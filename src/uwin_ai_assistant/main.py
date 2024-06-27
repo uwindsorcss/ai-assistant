@@ -1,5 +1,5 @@
 """CLI with the chatbot for testing purposes"""
-import inference
+import inference as inference
 
 
 def main():

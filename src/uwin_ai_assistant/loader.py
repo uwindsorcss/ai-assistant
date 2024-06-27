@@ -1,5 +1,5 @@
 """Interface with the vector store"""
-import config
+import config as config
 from clients import openai_client, qdrant_client
 from reranker import rerank
 

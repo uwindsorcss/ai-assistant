@@ -1,4 +1,4 @@
-import config
+import config as config
 from clients import cohere_client
 
 def rerank(query, docs):
