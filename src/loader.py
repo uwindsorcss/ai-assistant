@@ -1,13 +1,14 @@
 """Interface with the vector store"""
 import config
 from clients import openai_client, qdrant_client
+from reranker import rerank
 
 
 def get_documents(query: str):
     """Retrieve documents from the vector store"""
     query_vector = (
         openai_client.embeddings.create(
-            model=config.EMBEDDER_URL,
+            model=config.EMBEDDING_MODEL,
             input=[query],
         )
         .data[0]
@@ -19,4 +20,10 @@ def get_documents(query: str):
         query_vector=query_vector,
         limit=config.K_VALUE,
     )
-    return "\n\n".join([result.payload["page_content"] for result in retrieved_docs])
+    
+    if config.RERANK:
+        docs = rerank(query, retrieved_docs)
+    else:
+        docs = [doc.payload["page_content"] for doc in retrieved_docs][:config.N_VALUE+1]
+
+    return "\n\n".join(list(docs))

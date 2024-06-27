@@ -37,7 +37,7 @@ for _, block in df.iterrows():
         continue  # Skip header
     response = openai_client.embeddings.create(
         input=block["content"],
-        model=config.EMBEDDER_URL,
+        model=config.EMBEDDING_MODEL,
     )
     embeddings = response.data[0].embedding
     point_id = str(uuid.uuid4())  # Generate a unique ID for each point

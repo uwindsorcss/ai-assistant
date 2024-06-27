@@ -1,4 +1,5 @@
 """Interface with the model for inference"""
+import config
 import loader
 from clients import openai_client
 
@@ -31,7 +32,7 @@ def generate_response(query: str):
                 "content": prompt,
             },
         ],
-        model="gpt-3.5-turbo-0125",
+        model=config.GPT_MODEL,
     )
 
     return completion.choices[0].message.content.strip()
