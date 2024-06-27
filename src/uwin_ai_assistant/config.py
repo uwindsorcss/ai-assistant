@@ -17,4 +17,4 @@ RERANK_MODEL = "rerank-english-v3.0"  # URL for the reranking model (will be upd
 EMBEDDING_DIM = 1536  # OpenAI text embedding 3 small's output dimensonality
 RERANK = True # Whether to rerank the documents (currently bad performance)
 K_VALUE = 10  # Number of documents retrieved
-N_VALUE = 10  # Number of documents reranked
+N_VALUE = 3  # Number of documents reranked
