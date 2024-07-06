@@ -7,8 +7,8 @@ import uuid
 import pandas as pd
 from qdrant_client.http.models import Distance, PointStruct, VectorParams
 
-import config as config
-from clients import openai_client, qdrant_client
+from uwin_ai_assistant import config
+from uwin_ai_assistant.clients import openai_client, qdrant_client
 
 # Delete previous collection
 qdrant_client.delete_collection(collection_name="ai_assistant")

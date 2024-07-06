@@ -1,5 +1,5 @@
 """CLI with the chatbot for testing purposes"""
-import inference as inference
+from uwin_ai_assistant import inference
 
 
 def main():

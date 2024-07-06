@@ -1,5 +1,5 @@
 """AI Powered Student Assistant."""
 
-from .inference import generate_response
+from . import inference, config, clients
 
-__all__ = ["generate_response"]
+__all__ = ["inference", "config", "clients"]

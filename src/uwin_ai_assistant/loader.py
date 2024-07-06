@@ -1,7 +1,7 @@
 """Interface with the vector store"""
-import config as config
-from clients import openai_client, qdrant_client
-from reranker import rerank
+from . import config
+from .clients import openai_client, qdrant_client
+from .reranker import rerank
 
 
 def get_documents(query: str):

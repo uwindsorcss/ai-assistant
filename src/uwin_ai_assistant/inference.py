@@ -1,7 +1,7 @@
 """Interface with the model for inference"""
-import config as config
-import loader as loader
-from clients import openai_client
+from . import config
+from . import loader
+from .clients import openai_client
 
 SYSTEM_PROMPT = """
     You are a helpful assistant for students in the Computer Science programs at The University of Windsor.

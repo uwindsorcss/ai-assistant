@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from inference import generate_response
+from uwin_ai_assistant.inference import generate_response
 
 app = FastAPI()
 

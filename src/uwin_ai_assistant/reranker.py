@@ -1,5 +1,5 @@
-import config as config
-from clients import cohere_client
+from . import config
+from .clients import cohere_client
 
 def rerank(query, docs):
     """Rerank the documents"""
