@@ -1,4 +1,5 @@
 pandas
 openai
+cohere
 qdrant-client
 fastapi
