@@ -4,10 +4,10 @@ import os
 import csv
 
 # Get all CSV files in the data directory
-input_files = ["./data/corpus/" + file for file in os.listdir("./data/corpus/") if file.endswith('.csv')]
+input_files = ["./data/base/" + file for file in os.listdir("./data/base/") if file.endswith('.csv')]
 
 # Write to a unified "corpus.csv" file
-output_file = "./data/corpus/corpus.csv"
+output_file = "./data/corpus.csv"
 
 try:
     # Read and concatenate all CSV files
