@@ -8,6 +8,7 @@
 """
 import sys
 import json
+from uwin_ai_assistant import config
 from uwin_ai_assistant.clients import openai_client
 from uwin_ai_assistant.inference import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE, generate_response
 
@@ -68,7 +69,7 @@ elif "--finetune" in cli_args:
 if "--finetune" in cli_args:
     finetune_response = openai_client.fine_tuning.jobs.create(
         training_file=file_id,
-        model="gpt-4o-mini",
+        model=config.GPT_MODEL,
         suffix="uwindsor_chatbot",
     )
     job_id = finetune_response["id"]
