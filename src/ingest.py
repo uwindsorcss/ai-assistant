@@ -27,7 +27,7 @@ df = pd.read_csv(
     config.DATA_PATH,
     delimiter=",",
     header=None,
-    names=["content"],
+    names=["title", "content"],
 )
 
 # Converting blocks into points (the central entity of Qdrant)
@@ -36,7 +36,7 @@ for _, block in df.iterrows():
     if block["content"] == "content":
         continue  # Skip header
     response = openai_client.embeddings.create(
-        input=block["content"],
+        input=block["title"] + " " + block["content"],
         model=config.EMBEDDING_MODEL,
     )
     embeddings = response.data[0].embedding

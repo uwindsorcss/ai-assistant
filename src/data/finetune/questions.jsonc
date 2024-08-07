@@ -1,6 +1,29 @@
 {
     "questions": [
+        /* CORE QUESTIONS */
         "How do I become a TA?",
-        "Explain the computer science society"
+        "Explain the computer science society",
+        "What is the course code for Key Concepts in Computer Science?",
+        "When is COMP 1400 offered?",
+        "Is COMP-4400 offered in the fall?",
+        "When is Object Oriented Programming Using Java course offered?",
+        "Is a Textbook required for COMP-2540?",
+        "Is a Textbook required for Cyber Ethics?",
+        "What is the course description for COMP-3110?",
+        "What topics are covered in COMP-2310 Course?",
+        "What do I Learn in Math-1250?",
+        "What do I Learn in Differential Calculus?",
+        "What topics would I expect to learn in COMP-3400?",
+        "Is there any prerequisites for COMP-1410?",
+        "Is there any prerequisites for COMP-2067?",
+        "What are the prerequisites for COMP-4400?",
+        "What do I need to take before enrolling in COMP-3400?",
+        "Is there any Labs in COMP 2560?",
+        "How many weekly lecture hours are in COMP 3150?",
+        "How many lectures hours are in COMP-2097?",
+        "Is COMP-2097 mandatory to take?",
+        "What is the title for COMP-4400?",
+        /* IRRELEVANT QUESTIONS */
+        "How is Imran Ahmed as a professor?"
     ]
 }
