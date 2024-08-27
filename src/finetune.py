@@ -8,9 +8,14 @@
 """
 import sys
 import json
+import commentjson
 from uwin_ai_assistant import config
 from uwin_ai_assistant.clients import openai_client
 from uwin_ai_assistant.inference import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE, generate_response
+
+QUESTIONS_PATH = "./data/finetune/questions.jsonc" # Path to base questions file
+TRAINING_PATH = "./data/finetune/training.jsonl" # Path to generated training dataset
+DOCUMENTS_PATH = "./data/finetune/documents.json" # Path to save retrieved documents
 
 cli_args = sys.argv[1:]
 
@@ -35,14 +40,14 @@ if "--generate" in cli_args:
     }
 
     # Load questions list
-    with open("./data/finetune/questions.jsonc", "r") as questions_file, open("./data/finetune/training.jsonl", "a") as training_file:
-        questions = json.load(questions_file)["questions"]
+    with open(QUESTIONS_PATH, "r") as questions_file, open(TRAINING_PATH, "a") as training_file:
+        questions = commentjson.load(questions_file)["questions"]
         for question in questions:
             response, documents = generate_response(question, return_documents=True) # Get response and documents
             prompt = USER_PROMPT_TEMPLATE % (documents, question) # Format prompt
             format["messages"][1]["content"] = prompt # Insert query, documents into training example
             format["messages"][2]["content"] = response # Insert response into training example
-            training_file.write(json.dumps(format) + "\n") # Save training example
+            json.dump(format, training_file, indent=4) # Save training example
 
     print("Successfully generated training dataset. Tweak responses as needed for the finetune.")
 
