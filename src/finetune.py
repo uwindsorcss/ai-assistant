@@ -2,6 +2,7 @@
     Pipeline for fine-tuning GPT-4o-mini on our custom dataset
     ONLY RUN IF YOU ARE RETRAINING THE LLM.
     If regenerating the dataset ensure questions.jsonc is prepared and add: --generate
+    To output the unranked documents for each question add: --documents
     If working with a file not yet uploaded to openai put the training.jsonl file into ./data/finetune/ and add: --upload
     If retraining on an existing file uploaded to OpenAI add: --file=<file_id>
     If retraining the model add: --finetune
@@ -40,14 +41,21 @@ if "--generate" in cli_args:
     }
 
     # Load questions list
+    saved_documents = {}
     with open(QUESTIONS_PATH, "r") as questions_file, open(TRAINING_PATH, "a") as training_file:
         questions = commentjson.load(questions_file)["questions"]
         for question in questions:
-            response, documents = generate_response(question, return_documents=True) # Get response and documents
+            response, documents, unranked_documents = generate_response(question, return_documents=True, return_unranked_documents=True) # Get response and documents
             prompt = USER_PROMPT_TEMPLATE % (documents, question) # Format prompt
+            if "--documents" in cli_args:
+                saved_documents[question] = unranked_documents
             format["messages"][1]["content"] = prompt # Insert query, documents into training example
             format["messages"][2]["content"] = response # Insert response into training example
             json.dump(format, training_file, indent=4) # Save training example
+
+    if "--documents" in cli_args:
+        with open(DOCUMENTS_PATH, "w") as documents_file:
+            json.dump(saved_documents, documents_file, indent=4)
 
     print("Successfully generated training dataset. Tweak responses as needed for the finetune.")
 

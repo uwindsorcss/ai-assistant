@@ -8,11 +8,11 @@
         "Is COMP-4400 offered in the fall?",
         "When is Object Oriented Programming Using Java course offered",
         "Is a Textbook required for COMP-2540",
-        "Is a Textbook required for Cyber Ethics?",
+        "is a Textbook required for Cyber Ethics?",
         "What is the course description for COMP-3110?",
         "What topics are covered in COMP-2310 Course?",
         "What do I Learn in Math-1250?",
-        "What do I Learn in Differential Calculus",
+        "what do I Learn in Differential Calculus",
         "What topics would I expect to learn in COMP-3400?",
         "Is there any prerequisites for COMP-1410?",
         "Is there any prerequisites for COMP-2067",
@@ -143,9 +143,13 @@
         "How do I connect to NoMachine?",
         "How do I connect to the university Wi-Fi",
         "How do the CSS Elections work?",
-        "Is computer science fun",
-        "Is software engineering hard?",
         // IRRELEVANT QUESTIONS
         "How is Imran Ahmed as a professor?",
+        "Is computer science fun",
+        "Is software engineering hard?",
+        "What is the best programming language?",
+        "when was the university of windsor founded",
+        "What is the best computer science program in Canada",
+        "who is the dean of the school of computer science"
     ]
 }

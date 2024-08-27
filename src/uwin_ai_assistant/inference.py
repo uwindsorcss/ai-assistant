@@ -16,11 +16,11 @@ USER_PROMPT_TEMPLATE = """
 """
 
 
-def generate_response(query: str, return_documents=False):
+def generate_response(query: str, return_documents=False, return_unranked_documents=False):
     """Get a response from the model"""
 
     # Create augmented prompt
-    documents = loader.get_documents(query)
+    documents, unranked_documents = loader.get_documents(query, return_unranked_documents=return_unranked_documents)
     prompt = USER_PROMPT_TEMPLATE % (documents, query)
 
     # Generate response
@@ -39,5 +39,7 @@ def generate_response(query: str, return_documents=False):
     )
 
     if return_documents:
+        if return_unranked_documents:
+            return completion.choices[0].message.content.strip(), documents, unranked_documents
         return completion.choices[0].message.content.strip(), documents
     return completion.choices[0].message.content.strip()

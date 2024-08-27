@@ -4,7 +4,7 @@ from .clients import openai_client, qdrant_client
 from .reranker import rerank
 
 
-def get_documents(query: str):
+def get_documents(query: str, return_unranked_documents=False):
     """Retrieve documents from the vector store"""
     query_vector = (
         openai_client.embeddings.create(
@@ -24,6 +24,8 @@ def get_documents(query: str):
     if config.RERANK:
         docs = rerank(query, retrieved_docs)
     else:
-        docs = [doc.payload["page_content"] for doc in retrieved_docs][:config.N_VALUE+1]
+        docs = [doc.payload["page_content"] for doc in retrieved_docs][:config.N_VALUE]
 
-    return "\n\n".join(list(docs))
+    if return_unranked_documents:
+        return "\n\n".join(list(docs)), "\n\n".join([doc.payload["page_content"] for doc in retrieved_docs])
+    return "\n\n".join(list(docs)), None
