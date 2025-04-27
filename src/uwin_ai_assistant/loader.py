@@ -3,13 +3,18 @@ from . import config
 from .clients import openai_client, qdrant_client
 from .reranker import rerank
 
+def augment_query(query: str):
+    """Augment the query with the system prompt"""
+    return config.RETRIEVE_PROMPT_TEMPLATE % query
 
 def get_documents(query: str, return_unranked_documents=False):
     """Retrieve documents from the vector store"""
+    augmented_query = augment_query(query)
+
     query_vector = (
         openai_client.embeddings.create(
             model=config.EMBEDDING_MODEL,
-            input=[query],
+            input=[augmented_query],
         )
         .data[0]
         .embedding
@@ -18,7 +23,7 @@ def get_documents(query: str, return_unranked_documents=False):
     retrieved_docs = qdrant_client.search(
         collection_name="ai_assistant",
         query_vector=query_vector,
-        limit=config.K_VALUE,
+        limit=config.N_VALUE,
     )
     
     if config.RERANK:

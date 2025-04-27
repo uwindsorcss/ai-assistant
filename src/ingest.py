@@ -43,7 +43,7 @@ for _, block in df.iterrows():
     point_id = str(uuid.uuid4())  # Generate a unique ID for each point
     points.append(
         PointStruct(
-            id=point_id, payload={"page_content": block["content"]}, vector=embeddings
+            id=point_id, payload={"page_content": block["title"] + " " + block["content"]}, vector=embeddings
         )
     )
 
