@@ -9,6 +9,7 @@ def generate_response(query: str, return_documents=False, return_unranked_docume
     # Create augmented prompt
     documents, unranked_documents = loader.get_documents(query, return_unranked_documents=return_unranked_documents)
     prompt = config.USER_PROMPT_TEMPLATE % (documents, query)
+    print(prompt)
 
     # Generate response
     completion = openai_client.chat.completions.create(

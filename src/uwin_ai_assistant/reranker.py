@@ -26,8 +26,6 @@ def rerank(query, docs):
         for result in rerank_response.results
     ], key=lambda x: x[1], reverse=True) # Sort by relevance score
 
-
-    filtered_docs = filter_docs(reranked_docs)
-    print(filtered_docs)
+    filtered_docs = reversed(filter_docs(reranked_docs)) # Put higher value documents lower in the context
 
     return filtered_docs
